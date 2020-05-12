@@ -37,11 +37,59 @@ bool User::admin(string usua, string clave_)
 
 void User::imprimir()
 {
-    ifstream leec;
-    leec.open("inventario.txt");
     cout<<"+-------------------------------------------------------------------+"<<endl;
     cout<<"| ID |         Producto                |  Cantidad         | Precio |"<<endl;
     cout<<"+-------------------------------------------------------------------+"<<endl;
+    ifstream leec;
+    string archiv,id,pord,cant,prec;
+    conten r;
+    int conta=0;
+    map<string,conten> invetory;
+    leec.open("inventario.txt");
+    while(leec.good()){
+        char temp=leec.get();
+        if(leec.good()){
+            if(temp=='\n' || temp==' '){
+                if(temp==' '){
+                    if(conta==0){
+                        id=archiv;
+
+                    }else if(conta==1){
+                        //r.nombre=archiv;
+                        pord=archiv;
+                    }else if(conta==2){
+                       // r.cantidad=archiv;
+                        cant=archiv;
+                    }
+
+                    archiv.clear();
+                    conta++;
+                }
+                 else if(temp=='\n'){
+                    conta=0;
+                    //r.costo=archiv;
+                    prec=archiv;
+                    //invetory.insert(pair<string,conten>(id,r));
+                    archiv.clear();
+                    cout<<"| "<<id<<" |         "<<pord<<"                |  "<<cant<<"         | "<<prec<<" |"<<endl;
+                }
+            }
+            else{
+                archiv+=temp;
+            }
+        }
+
+    }
+    leec.close();
+
+
+}
+
+void User::agreg_invent(string ID_, string nom_, string cant_, string cost_)
+{
+    ofstream escri;
+    escri.open("inventario.txt",ios::app);
+    escri<<ID_<<" "<<nom_<<" "<<cant_<<" "<<cost_<<"\n";
 }
 
 void User::agregar_user(string cedula_, string clave_)
@@ -123,4 +171,45 @@ int User::cantidad()
         }
     }
     return cantidadparaarreglo;
+}
+
+void User::desplegar_inventario(map<string,conten> &invetory)      //entro el mapa
+{
+    ifstream leec;
+    string archiv,id,pord,cant,prec;
+    conten r;
+    int conta=0;
+    leec.open("inventario.txt");
+    while(leec.good()){
+        char temp=leec.get();
+        if(leec.good()){
+            if(temp=='\n' || temp==' '){
+                if(temp==' '){
+                    if(conta==0){
+                        id=archiv;
+
+                    }else if(conta==1){
+                        r.nombre=archiv;
+                    }else if(conta==2){
+                        r.cantidad=archiv;
+                    }
+
+                    archiv.clear();
+                    conta++;
+                }
+                 else if(temp=='\n'){
+                    conta=0;
+                    r.costo=archiv;
+                    invetory.insert(pair<string,conten>(id,r));
+                }
+            }
+            else{
+                archiv+=temp;
+            }
+        }
+
+    }
+    leec.close();
+
+
 }

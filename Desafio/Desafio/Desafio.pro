@@ -5,9 +5,7 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp \
-        produc.cpp \
         user.cpp
 
 HEADERS += \
-    produc.h \
     user.h

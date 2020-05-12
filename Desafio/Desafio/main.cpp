@@ -12,7 +12,7 @@ int main()
     char selec;
     int pp;
     bool confirmacion,x=true;
-    string usuario1,clave1,saldo1,cc,clave_client,puesto,UserName1;
+    string usuario1,clave1,saldo1,cc,clave_client,puesto,UserName1,nom_item,cost,cantidad,ID;
     cout << "Bienvenido." << endl;
     cout << "\n";
     cout << "Que desea hacer."<< "\n" << endl;
@@ -30,20 +30,28 @@ int main()
                 x=true;
             while(x==true){
                 cout<<"MENU"<<endl;
-                cout << "A. Mostrar invetario." << endl;
+                cout << "A. Agregar algo al inventario." << endl;
                 cout << "B. Crear un combo." << endl;
-                cout << "C. Crear un reporte de ventas." << endl;
+                cout << "C.mostrar invent" << endl;
                 cout << "D. Registrar usuario." << endl;
                 cout << "E. Salir." << endl;
                 cin>>selec;
                 if(selec=='A'){
                     admon.imprimir();
+
+                    cout << "Ingrese el ID del producto." << endl; cin>>ID;
+                    cout << "Ingrese el nombre del producto." << endl; cin>>nom_item;
+                    cout << "Ingrese la cantidad de este producto." << endl; cin>>cantidad;
+                    cout << "Ingrese el costo de este producto." << endl; cin>>cost;
+
+                    admon.agreg_invent(ID,nom_item,cantidad,cost);
                 }
                 else if(selec=='B'){
+                    cout << "Este es el inventario actual." << endl;
 
                 }
                 else if(selec=='C'){
-
+                    admon.imprimir();
                 }
                 else if(selec=='D'){
                     cout<<"Inrese la cedula del usuario."<<endl; cin>>cc;
