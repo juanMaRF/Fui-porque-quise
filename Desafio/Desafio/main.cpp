@@ -12,7 +12,7 @@ int main()
     char selec;
     int pp;
     bool confirmacion,x=true;
-    string usuario1,clave1,saldo1,cc,clave_client,puesto,UserName1,nom_item,cost,cantidad,ID;
+    string usuario1,clave1,saldo1,cc,clave_client,puesto,UserName1,nom_item,cost,cantidad,ID,nom_item1,cantidad1;
     cout << "Bienvenido." << endl;
     cout << "\n";
     cout << "Que desea hacer."<< "\n" << endl;
@@ -22,6 +22,7 @@ int main()
     cin>>selec;
     if (selec=='A'){
         User admon;
+        admon.combos.clear();
         cout << "Ingrese el usuario." << endl; cin>>usuario1;
         cout << "Ingrese la clave." << endl; cin>>clave1;
         if(admon.admin(usuario1,clave1)==true){
@@ -29,29 +30,29 @@ int main()
             if (pp==1)
                 x=true;
             while(x==true){
+                cout << "INVETARIO." << endl;
+                admon.imprimir(); cout<<'\n';
                 cout<<"MENU"<<endl;
                 cout << "A. Agregar algo al inventario." << endl;
                 cout << "B. Crear un combo." << endl;
-                cout << "C.mostrar invent" << endl;
+                cout << "C. Registrar ventas del dia." << endl;
                 cout << "D. Registrar usuario." << endl;
                 cout << "E. Salir." << endl;
                 cin>>selec;
                 if(selec=='A'){
-                    admon.imprimir();
-
                     cout << "Ingrese el ID del producto." << endl; cin>>ID;
-                    cout << "Ingrese el nombre del producto." << endl; cin>>nom_item;
+                    cout << "Ingrese el nombre del producto.(cambie los espacios por '_')" << endl; cin>>nom_item; //hay un problema al agregar un string que contenga espacios
                     cout << "Ingrese la cantidad de este producto." << endl; cin>>cantidad;
                     cout << "Ingrese el costo de este producto." << endl; cin>>cost;
 
                     admon.agreg_invent(ID,nom_item,cantidad,cost);
                 }
                 else if(selec=='B'){
-                    cout << "Este es el inventario actual." << endl;
-
+                    admon.crear_combo();
+                    //admon.imprimir_combos();
                 }
                 else if(selec=='C'){
-                    admon.imprimir();
+
                 }
                 else if(selec=='D'){
                     cout<<"Inrese la cedula del usuario."<<endl; cin>>cc;
@@ -60,6 +61,7 @@ int main()
 
                 }
                 else if(selec=='E'){
+                    admon.actual_txt();
                     x=false;
                 }
             }
@@ -81,9 +83,17 @@ int main()
             if(pp==1)
                 x=true;
             while(x==true){
+                cout << "COMBOS." << endl;
+                Usuario.imprimir_combos();
                 cout << "Menu:" << "\n" << endl;
+                cout << "A. Comprar un combo." << endl;
+                cout << "B. Salir." << endl;
+                cin>>selec;
+                if(selec=='A'){
 
-                cout << "" << endl;
+                }else if(selec=='B'){
+                    x=false;
+                }
             }
         }
 
