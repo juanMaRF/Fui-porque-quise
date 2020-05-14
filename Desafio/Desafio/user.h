@@ -12,6 +12,7 @@ struct conten                   //creo una estructura para el mapa de inventario
     string cantidad;
     string costo;
 };
+
 class User
 {
     string cedula,clave,saldo;
@@ -20,6 +21,8 @@ public:
     map<string,conten> invent;
 
     map<string,conten> combos;
+
+    map<int,map<string,int>> combs;
 
     User();
 
@@ -43,13 +46,17 @@ public:
 
     int num_combo();                                    //retorna el numero de combos que hay en el txt contando los \n
 
-    void compra();                                      //permite al usuario comprar combos
+    void compra(string user);                                      //permite al usuario comprar combos
 
-    void desplegar_combos(map<string,conten> &combs_);  //saca del txt los combos y los guarda en un mapa para mejor uso
+    void desplegar_combos(map<string,conten> &combs_);  //saca del txt los combos y los guarda en un mapa para mejor uso al imprimir
 
     void actual_txt();                                  //actualizo los txt
 
-    bool existencias(string id_);                                 //verifica si hay productos en el inventario suficientes para el combo
+    void Registro(string x_,string puesto_,string user); //guardo las compras recientes
+
+    void Reg_T();                                        //si el admin decide guardar registros se agregaran de lo contrario no
+
+    void mpa_cargar(map<int,map<string,int>> &combs1_);  //cargo un mapa con los combos mas organizados para su implementacion
 };
 
 

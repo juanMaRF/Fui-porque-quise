@@ -1,0 +1,3 @@
+1;2 papas+2 arequipe;9000
+2;3 pan perro+1 hamburguesa;15000
+3;1 papas+1 pan_perro;10000

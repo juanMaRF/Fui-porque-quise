@@ -1,0 +1,4 @@
+1;papas;0;4500
+2;pan_perro;2;6000
+3;arequipe;0;3500
+4;hamburguesa;10;3500
