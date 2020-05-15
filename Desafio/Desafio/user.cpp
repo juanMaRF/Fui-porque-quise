@@ -272,6 +272,9 @@ void User::compra(string user)
     string id_,nombre,puesto; //inicializo las variables a usar
     int id,Dinero,dine=Dinero;
     cout << "Por favor, seleccione el numero del combo." << endl; cin>>id_;
+    /*mpa_cargar(combs);
+    desplegar_inventario(invent);
+    desplegar_combos(combos);*/
     map<string,conten>::iterator iter; //creo el iterador del mapa de los combos que tiene el precio
     for(iter=combos.begin();iter!=combos.end();*iter++){
         if(id_==iter->first){
